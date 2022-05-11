@@ -1,0 +1,9 @@
+{
+  admin off
+  email {$CADDY_CERT_EMAIL}
+}
+
+{$CADDY_DDNS_HOST} {
+  encode gzip
+  reverse_proxy ui:9000
+}

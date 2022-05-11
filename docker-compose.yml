@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  ingress:
+
+services:
+  ui:
+    image: portainer/portainer-ce:2.13.1-alpine
+    restart: unless-stopped
+    networks:
+      - ingress
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - ./data/portainer:/data
+
+  proxy:
+    image: caddy:2.5.1-alpine
+    restart: unless-stopped
+    depends_on:
+      - ui
+    networks:
+      - ingress
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - CADDY_DDNS_HOST=${CADDY_DDNS_HOST:?The external host name is required}
+      - CADDY_CERT_EMAIL=${CADDY_CERT_EMAIL:?The certificate owner email is required}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./data/caddy:/data 
