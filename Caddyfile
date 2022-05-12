@@ -1,9 +1,46 @@
 {
+  # Disable the internal admin of Caddy 
   admin off
+
+  # Your email, to generate SSL certificates
   email {$CADDY_CERT_EMAIL}
 }
 
-{$CADDY_DDNS_HOST} {
-  encode gzip
-  reverse_proxy ui:9000
+# This is for portainer
+{$CADDY_HOSTNAME_PORTAINER} {
+
+  # Hide server header field
+  header /* {
+    -Server
+  }
+
+  # Compress with gzip --best
+  encode {
+    gzip 9
+  }
+  
+  # Reverse proxy to the Portainer UI
+  reverse_proxy {
+    to http://ui:9000
+  }
+
+}
+
+# This is for the static site
+{$CADDY_HOSTNAME_STATIC} {
+
+    # Hide server header field
+    header /* {
+        -Server
+    }
+
+    # Compress with gzip --best
+    encode {
+        gzip 9
+    }
+
+    file_server {
+        root /srv
+    }
+
 }
