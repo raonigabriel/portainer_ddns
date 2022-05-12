@@ -24,8 +24,10 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - CADDY_DDNS_HOST=${CADDY_DDNS_HOST:?The external host name is required}
+      - CADDY_HOSTNAME_PORTAINER=${CADDY_HOSTNAME_PORTAINER:?The portainer host name is required}
+      - CADDY_HOSTNAME_STATIC=${CADDY_HOSTNAME_STATIC:?The static site host name is required}
       - CADDY_CERT_EMAIL=${CADDY_CERT_EMAIL:?The certificate owner email is required}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./data/caddy:/data 
+      - ./data/caddy:/data
+      - ./www:/srv
