@@ -7,7 +7,7 @@ A docker-compose stack to get portainer running on your home pc / cloud vm, feat
 * [Autotmatic redirects HTTP](https://caddyserver.com/docs/automatic-https) calls to HTTPS
 * [GZIP Compression](https://caddyserver.com/docs/gzip)
 * [Static web site](https://caddyserver.com/docs/quick-starts/static-files) hosting
-* [Precompressed assets with brotli and gzip](https://misterorion.com/caddy-server-brotli/)
+* [Precompressed assets with brotli](https://misterorion.com/caddy-server-brotli/)
 
 ---
 ## Environment variables (change them to your values)
@@ -15,7 +15,7 @@ A docker-compose stack to get portainer running on your home pc / cloud vm, feat
 * CADDY_HOSTNAME_PORTAINER=myportainer.ddns.net
 * CADDY_HOSTNAME_SITE=mysite.sytes.net
 
-You need to set those ENV variables on your host.
+You need to set those ENV variables on your host. You can add them [just for one single command](https://www.baeldung.com/linux/set-env-variables-bash-command#setting-multiple-variables-only-for-a-single-command) or [permanently] (https://phoenixnap.com/kb/linux-set-environment-variable. I will use the first approach.
 
 ---
 ## Guide
@@ -47,10 +47,10 @@ This is also known as *static IP address* or *IP reservation*. This varies depen
 $ git clone https://github.com/raonigabriel/portainer_ddns.git
 ```
 
-6. Start the stack
+6. Start the stack, passing the variables **BEFORE** the docker-compose command
 ```
 $ cd portainer_ddns
-$ docker-compose up -d
+$ CADDY_CERT_EMAIL=me@example.com CADDY_HOSTNAME_PORTAINER=myportainer.ddns.net CADDY_HOSTNAME_SITE=mysite.sytes.net docker-compose up -d
 ```
 
 7. Browse to your portainer at https://myportainer.ddns.net or your site at https://mysite.sytes.net
