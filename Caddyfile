@@ -22,6 +22,9 @@
   # Reverse proxy to the Portainer UI
   reverse_proxy {
     to http://ui:9000
+    header_up X-Forwarded-Proto {scheme}
+    header_up X-Forwarded-For {remote}
+    header_up X-Real-IP {remote}
   }
 
 }
@@ -34,6 +37,11 @@
         -Server
     }
 
+    # Cache js-dos assets
+    header /jsdos/* {
+        Cache-Control "public, max-age=31536000"
+    }
+
     # Compress with gzip --best
     encode {
         gzip 9
@@ -43,7 +51,11 @@
     file_server {
         root /srv  
         precompressed br
-        index tetris.html        
+        index tetris.html
     }
+
+    # HTTP2 server push
+    push / /jsdos/wdosbox.wasm
+
 
 }
