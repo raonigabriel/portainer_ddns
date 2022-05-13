@@ -15,7 +15,7 @@ A docker-compose stack to get portainer running on your home pc / cloud vm, feat
 * CADDY_HOSTNAME_PORTAINER=myportainer.ddns.net
 * CADDY_HOSTNAME_SITE=mysite.sytes.net
 
-You need to set those ENV variables on your host. You can add them [just for one single command](https://www.baeldung.com/linux/set-env-variables-bash-command#setting-multiple-variables-only-for-a-single-command) or [permanently] (https://phoenixnap.com/kb/linux-set-environment-variable. I will use the first approach.
+You need to set those ENV variables on your host. You can add them [just for one single command](https://www.baeldung.com/linux/set-env-variables-bash-command#setting-multiple-variables-only-for-a-single-command) or [permanently](https://phoenixnap.com/kb/linux-set-environment-variable). I will use the first approach.
 
 ---
 ## Guide
