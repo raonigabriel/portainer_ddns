@@ -25,7 +25,7 @@ services:
       - "443:443"
     environment:
       - CADDY_HOSTNAME_PORTAINER=${CADDY_HOSTNAME_PORTAINER:?The portainer host name is required}
-      - CADDY_HOSTNAME_STATIC=${CADDY_HOSTNAME_STATIC:?The static site host name is required}
+      - CADDY_HOSTNAME_SITE=${CADDY_HOSTNAME_SITE:?The static site host name is required}
       - CADDY_CERT_EMAIL=${CADDY_CERT_EMAIL:?The certificate owner email is required}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
