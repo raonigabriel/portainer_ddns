@@ -5,11 +5,12 @@ A docker-compose stack to get portainer running on your home pc / cloud vm, feat
 * [Reverse proxy](https://caddyserver.com/docs/quick-starts/reverse-proxy) to Portainer UI
 * [Automatic, free SSL certificates](https://caddyserver.com/docs/automatic-https) provided by [Lets Encrypt](https://letsencrypt.org/)
 * [Automatic redirects HTTP](https://caddyserver.com/docs/automatic-https) calls to HTTPS
+* [HTTP/2 right out of the box](https://caddyserver.com/)
 * [GZIP Compression](https://caddyserver.com/docs/gzip)
 * [Static web site](https://caddyserver.com/docs/quick-starts/static-files) hosting
 * [Precompressed assets with brotli](https://misterorion.com/caddy-server-brotli/)
 * [Cache-Control header](https://gtmetrix.com/serve-static-assets-with-an-efficient-cache-policy.html)  on jsdos assets
-* [HTTP2 Server Push](https://en.wikipedia.org/wiki/HTTP/2_Server_Push) on a big wasm file
+* HTTP/2 [Server Push](https://en.wikipedia.org/wiki/HTTP/2_Server_Push) on a big wasm file
 ---
 ## Environment variables (change them to your values)
 * CADDY_CERT_EMAIL=me@example.com
