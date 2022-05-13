@@ -39,8 +39,11 @@
         gzip 9
     }
 
+    # Serving a WebAssembly based emulator (js-dos).
     file_server {
-        root /srv
+        root /srv  
+        precompressed br
+        index tetris.html        
     }
 
 }
