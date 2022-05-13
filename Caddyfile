@@ -27,7 +27,7 @@
 }
 
 # This is for the static site
-{$CADDY_HOSTNAME_STATIC} {
+{$CADDY_HOSTNAME_SITE} {
 
     # Hide server header field
     header /* {
