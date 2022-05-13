@@ -1,7 +1,23 @@
 # portainer_ddns
 A docker-compose stack to get portainer running on your home pc / cloud vm, featuring ddns and https
 ---
+## Features
+* [Reverse proxy](https://caddyserver.com/docs/quick-starts/reverse-proxy) to Portainer UI
+* [Automatic, free SSL certificates](https://caddyserver.com/docs/automatic-https) provided by [Lets Encrypt](https://letsencrypt.org/)
+* [Autotmatic redirects HTTP](https://caddyserver.com/docs/automatic-https) calls to HTTPS
+* [GZIP Compression](https://caddyserver.com/docs/gzip)
+* [Static web site](https://caddyserver.com/docs/quick-starts/static-files) hosting
+* [Precompressed assets with brotli and gzip](https://misterorion.com/caddy-server-brotli/)
 
+---
+## Environment variables (change them to your values)
+* CADDY_CERT_EMAIL=me@example.com
+* CADDY_HOSTNAME_PORTAINER=myportainer.ddns.net
+* CADDY_HOSTNAME_SITE=mysite.sytes.net
+
+You need to set those ENV variables on your host.
+
+---
 ## Guide
 1. Get yourself a dynamic-dns pointing to your public internet IP address.
 For this example, I will be using https://www.noip.com as my provider and my custom hostnames will be: **myportainer.ddns.net** and **mysite.sytes.net**
@@ -38,18 +54,3 @@ $ docker-compose up -d
 ```
 
 7. Browse to your portainer at https://myportainer.ddns.net or your site at https://mysite.sytes.net
-
----
-## Environment variables (change them to your values)
-* CADDY_CERT_EMAIL=me@example.com
-* CADDY_HOSTNAME_PORTAINER=myportainer.ddns.net
-* CADDY_HOSTNAME_SITE=mysite.sytes.net
-
----
-## Features
-* [Reverse proxy](https://caddyserver.com/docs/quick-starts/reverse-proxy) to Portainer UI
-* [Automatic, free SSL certificates](https://caddyserver.com/docs/automatic-https) provided by [Lets Encrypt](https://letsencrypt.org/)
-* [Autotmatic redirects HTTP](https://caddyserver.com/docs/automatic-https) calls to HTTPS
-* [GZIP Compression](https://caddyserver.com/docs/gzip)
-* [Static web site](https://caddyserver.com/docs/quick-starts/static-files) hosting
-* [Precompressed assets with brotli and gzip](https://misterorion.com/caddy-server-brotli/)
